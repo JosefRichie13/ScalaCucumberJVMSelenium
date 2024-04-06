@@ -19,6 +19,21 @@ class Steps_Login extends ScalaDsl with EN {
       case "standard" =>
         driverMethods.typeText(configs.validUser, selectors.userName)
         driverMethods.typeText(configs.password, selectors.password)
+      case "locked" =>
+        driverMethods.typeText(configs.lockedUser, selectors.userName)
+        driverMethods.typeText(configs.password, selectors.password)
+      case "no_username" =>
+        driverMethods.typeText(configs.password, selectors.password)
+      case "no_password" =>
+        driverMethods.typeText(configs.validUser, selectors.userName)
+      case "wrong_username" =>
+        driverMethods.typeText(configs.wrongUser, selectors.userName)
+        driverMethods.typeText(configs.password, selectors.password)
+      case "wrong_password" =>
+        driverMethods.typeText(configs.validUser, selectors.userName)
+        driverMethods.typeText(configs.wrongPassword, selectors.password)
+      case _ =>
+        throw new IllegalArgumentException("Incorrect User Type : " + userType)
     }
     driverMethods.clickButton(selectors.loginButton)
   }
@@ -36,5 +51,14 @@ class Steps_Login extends ScalaDsl with EN {
     }
   }
 
+  Then("""I should see the login error message {string}"""){(message: String) =>
+    assertTrue(driverMethods.getTextFromElement(selectors.errorMessage).contains(message))
+  }
+
+  When("""I logout of the webpage"""){() =>
+    driverMethods.clickButton(selectors.menu)
+    Thread.sleep(5000)
+    driverMethods.clickButton(selectors.logoutButton)
+  }
 
 }
