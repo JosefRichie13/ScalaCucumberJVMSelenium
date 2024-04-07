@@ -26,5 +26,9 @@ class Selectors {
   val continueButton: By = By.id("continue")
   val finishButton: By = By.id("finish")
   val checkoutBanner: By = By.className("complete-header")
+  val taxCalculated: By = By.className("summary_tax_label")
+  val subtotal: By = By.className("summary_subtotal_label")
+  val fullTotal: By = By.cssSelector("div[class*=summary_total_label]")
+  val priceList: By = By.className("inventory_item_price")
 
 }

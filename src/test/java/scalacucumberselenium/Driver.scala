@@ -1,6 +1,10 @@
 package scalacucumberselenium
 
-import org.openqa.selenium.By
+import org.openqa.selenium.{By, WebElement}
+
+import scala.:+
+import scala.collection.convert.ImplicitConversions.`list asScalaBuffer`
+import scala.collection.mutable.ListBuffer
 
 
 class Driver {
@@ -21,9 +25,15 @@ class Driver {
     webDriver.driver.findElement(element).getText
   }
 
-  def getTextFromAListOfElements(element: By, index: Int): String ={
+  def getSpecificTextFromAListOfElements(element: By, index: Int): String ={
     webDriver.driver.findElements(element).get(index).getText
   }
+
+  def getAllTextFromAListOfElements(element: By): List[String] = {
+    val elements = webDriver.driver.findElements(element)
+    elements.map(_.getText).toList
+  }
+
 
   // Checks if an element is present in the DOM or not
   // Returns FALSE if element is NOT visible, which means the size will be 0
