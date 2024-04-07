@@ -30,5 +30,6 @@ class Selectors {
   val subtotal: By = By.className("summary_subtotal_label")
   val fullTotal: By = By.cssSelector("div[class*=summary_total_label]")
   val priceList: By = By.className("inventory_item_price")
+  val itemNumberInCart: By = By.className("shopping_cart_badge")
 
 }
