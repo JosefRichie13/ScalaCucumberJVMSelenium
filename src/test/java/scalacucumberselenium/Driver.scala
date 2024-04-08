@@ -1,5 +1,6 @@
 package scalacucumberselenium
 
+import org.openqa.selenium.support.ui.Select
 import org.openqa.selenium.{By, WebElement}
 
 import scala.:+
@@ -32,6 +33,12 @@ class Driver {
   def getAllTextFromAListOfElements(element: By): List[String] = {
     val elements = webDriver.driver.findElements(element)
     elements.map(_.getText).toList
+  }
+
+  def selectFromDropdownUsingText(element: By, selectOptionInText: String): Unit ={
+    val elementToSelect: WebElement = webDriver.driver.findElement(element)
+    val select: Select = new Select(elementToSelect)
+    select.selectByVisibleText(selectOptionInText)
   }
 
 
