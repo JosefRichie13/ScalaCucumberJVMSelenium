@@ -12,20 +12,12 @@ Feature: Footer Scenarios
     When I login as a "standard" user
     Then I confirm that the footer is "visible"
 
-  Scenario: Twitter Footer link redirects correctly
+  Scenario: Footer links redirect correctly
     Given I open the web page
     And I login as a "standard" user
-    When I click on the "Twitter" icon in the footer
-    Then I should see the redirect link as "https://twitter.com/saucelabs"
-
-  Scenario: Facebook Footer link redirects correctly
-    Given I open the web page
-    And I login as a "standard" user
-    When I click on the "Facebook" icon in the footer
-    Then I should see the redirect link as "https://www.facebook.com/saucelabs"
-
-  Scenario: LinkedIn Footer link redirects correctly
-    Given I open the web page
-    And I login as a "standard" user
+    And I click on the "Twitter" icon in the footer
+    And I should see the "Twitter" page opened with the URL as "https://twitter.com/saucelabs"
+    And I click on the "Facebook" icon in the footer
+    And I should see the "Facebook" page opened with the URL as "https://www.facebook.com/saucelabs"
     When I click on the "LinkedIn" icon in the footer
-    Then I should see the redirect link as "https://www.linkedin.com/company/sauce-labs/"
+    Then I should see the "LinkedIn" page opened with the URL as "https://www.linkedin.com/company/sauce-labs/"

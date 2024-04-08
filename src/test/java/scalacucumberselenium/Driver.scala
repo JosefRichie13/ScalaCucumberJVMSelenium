@@ -58,7 +58,7 @@ class Driver {
     webDriver.driver.getCurrentUrl
   }
 
-  def switchBetweenTwoTabs(tabNumber: Int): WebDriver = {
+  def switchBetweenTabs(tabNumber: Int): WebDriver = {
     val setOfHandleIDS = webDriver.driver.getWindowHandles
     val listOfHandleIDS = setOfHandleIDS.toArray(new Array[String](0)).toList
     webDriver.driver.switchTo().window(listOfHandleIDS(tabNumber))

@@ -32,8 +32,22 @@ class Steps_Footer extends ScalaDsl with EN{
     Thread.sleep(5000)
   }
 
-  Then("""I should see the redirect link as {string}""") { (redirectURL: String) =>
-    driverMethods.switchBetweenTwoTabs(1)
-    assertEquals(driverMethods.getTheCurrentURL, redirectURL)
+  Then("""I should see the {string} page opened with the URL as {string}""") { (redirectPage: String, redirectURL: String) =>
+    redirectPage match {
+      case "Twitter" =>
+        driverMethods.switchBetweenTabs(1)
+        assertEquals(driverMethods.getTheCurrentURL, redirectURL)
+        driverMethods.switchBetweenTabs(0)
+      case "Facebook" =>
+        driverMethods.switchBetweenTabs(2)
+        assertEquals(driverMethods.getTheCurrentURL, redirectURL)
+        driverMethods.switchBetweenTabs(0)
+      case "LinkedIn" =>
+        driverMethods.switchBetweenTabs(3)
+        assertEquals(driverMethods.getTheCurrentURL, redirectURL)
+        driverMethods.switchBetweenTabs(0)
+      case _ =>
+        throw new IllegalArgumentException("Incorrect page : " + redirectPage)
+    }
   }
 }
