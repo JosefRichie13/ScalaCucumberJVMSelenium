@@ -3,9 +3,8 @@ package scalacucumberselenium
 import org.openqa.selenium.support.ui.Select
 import org.openqa.selenium.{By, WebDriver, WebElement}
 
-import scala.:+
-import scala.collection.convert.ImplicitConversions.`list asScalaBuffer`
-import scala.collection.mutable.ListBuffer
+import scala.jdk.CollectionConverters._
+
 
 
 class Driver {
@@ -31,8 +30,8 @@ class Driver {
   }
 
   def getAllTextFromAListOfElements(element: By): List[String] = {
-    val elements = webDriver.driver.findElements(element)
-    elements.map(_.getText).toList
+    val elements = webDriver.driver.findElements(element).asScala.toList
+    elements.map(_.getText)
   }
 
   def selectFromDropdownUsingText(element: By, selectOptionInText: String): Unit ={
