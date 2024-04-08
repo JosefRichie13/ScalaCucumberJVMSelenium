@@ -33,5 +33,9 @@ class Selectors {
   val itemNumberInCart: By = By.className("shopping_cart_badge")
   val productSort: By = By.className("product_sort_container")
   val productList: By = By.className("inventory_item_name")
+  val footer: By = By.className("footer")
+  val footerTwitter: By = By.cssSelector(".social_twitter a")
+  val footerFacebook: By = By.cssSelector(".social_facebook a")
+  val footerLinkedin: By = By.cssSelector(".social_linkedin a")
 
 }

@@ -1,7 +1,7 @@
 package scalacucumberselenium
 
 import org.openqa.selenium.support.ui.Select
-import org.openqa.selenium.{By, WebElement}
+import org.openqa.selenium.{By, WebDriver, WebElement}
 
 import scala.:+
 import scala.collection.convert.ImplicitConversions.`list asScalaBuffer`
@@ -41,7 +41,6 @@ class Driver {
     select.selectByVisibleText(selectOptionInText)
   }
 
-
   // Checks if an element is present in the DOM or not
   // Returns FALSE if element is NOT visible, which means the size will be 0
   // Returns TRUE if element is visible, which means the size will be greater than 0
@@ -53,6 +52,16 @@ class Driver {
     else {
       true
     }
+  }
+
+  def getTheCurrentURL: String ={
+    webDriver.driver.getCurrentUrl
+  }
+
+  def switchBetweenTwoTabs(tabNumber: Int): WebDriver = {
+    val setOfHandleIDS = webDriver.driver.getWindowHandles
+    val listOfHandleIDS = setOfHandleIDS.toArray(new Array[String](0)).toList
+    webDriver.driver.switchTo().window(listOfHandleIDS(tabNumber))
   }
 
 }

@@ -20,7 +20,7 @@ class Hooks extends ScalaDsl with EN{
   After { (scenario: Scenario) =>
     val screenshot = webDriver.driver.asInstanceOf[TakesScreenshot].getScreenshotAs(OutputType.BYTES)
     scenario.attach(screenshot, "image/png", "image1")
-    webDriver.driver.close()
+    webDriver.driver.quit()
   }
 
 }
